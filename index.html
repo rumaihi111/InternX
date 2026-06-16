@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crypto & Prediction Market Bot Developer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f4f4f4;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header/Hero Section */
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            animation: fadeInDown 1s ease-in;
+        }
+
+        header p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 15px 40px;
+            background: white;
+            color: #667eea;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Services Section */
+        .services {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            color: #333;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .service-card {
+            padding: 40px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            border-color: #667eea;
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #667eea;
+        }
+
+        .service-card p {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        /* Portfolio Section */
+        .portfolio {
+            padding: 80px 0;
+            background: #f4f4f4;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .portfolio-item {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        }
+
+        .portfolio-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 30px;
+            color: white;
+        }
+
+        .portfolio-header h3 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+
+        .portfolio-tag {
+            display: inline-block;
+            padding: 5px 15px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin-top: 10px;
+        }
+
+        .portfolio-content {
+            padding: 30px;
+        }
+
+        .portfolio-content p {
+            color: #666;
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+
+        .portfolio-features {
+            list-style: none;
+            margin-bottom: 20px;
+        }
+
+        .portfolio-features li {
+            padding: 8px 0;
+            color: #555;
+            border-bottom: 1px solid #eee;
+        }
+
+        .portfolio-features li:before {
+            content: "✓ ";
+            color: #667eea;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .repo-link {
+            display: inline-block;
+            padding: 10px 25px;
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.3s ease;
+        }
+
+        .repo-link:hover {
+            background: #764ba2;
+        }
+
+        /* About Section */
+        .about {
+            padding: 80px 0;
+            background: white;
+            text-align: center;
+        }
+
+        .about p {
+            font-size: 1.2rem;
+            color: #666;
+            max-width: 800px;
+            margin: 0 auto 30px;
+            line-height: 1.8;
+        }
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 40px;
+        }
+
+        .skill-tag {
+            padding: 10px 20px;
+            background: #667eea;
+            color: white;
+            border-radius: 25px;
+            font-size: 0.9rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .contact h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .contact p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        /* Footer */
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+        }
+
+        footer p {
+            opacity: 0.8;
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+
+            header p {
+                font-size: 1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .services-grid,
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <header>
+        <div class="container">
+            <h1>🤖 Crypto & Prediction Market Bot Developer</h1>
+            <p>Building intelligent trading bots and automated systems for cryptocurrency and prediction markets</p>
+            <a href="#portfolio" class="cta-button">View My Work</a>
+        </div>
+    </header>
+
+    <!-- Services Section -->
+    <section class="services">
+        <div class="container">
+            <h2 class="section-title">What I Do</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">💰</div>
+                    <h3>Cryptocurrency Trading Bots</h3>
+                    <p>Automated trading systems that execute strategies on various crypto exchanges with precision and speed. Optimized for performance and profitability.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">📊</div>
+                    <h3>Prediction Market Bots</h3>
+                    <p>Intelligent bots for prediction markets like Polymarket, using data analysis and algorithmic trading to maximize returns on market predictions.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">⚡</div>
+                    <h3>Custom Bot Solutions</h3>
+                    <p>Tailored bot development for specific trading strategies, market analysis, and automated execution systems across multiple platforms.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="portfolio">
+        <div class="container">
+            <h2 class="section-title">Featured Projects</h2>
+            <div class="portfolio-grid">
+                <!-- Polyedge -->
+                <div class="portfolio-item">
+                    <div class="portfolio-header">
+                        <h3>Polyedge</h3>
+                        <span class="portfolio-tag">Prediction Markets</span>
+                    </div>
+                    <div class="portfolio-content">
+                        <p>An advanced bot for Polymarket that leverages edge detection algorithms to identify profitable betting opportunities in prediction markets.</p>
+                        <ul class="portfolio-features">
+                            <li>Real-time market analysis</li>
+                            <li>Edge detection algorithms</li>
+                            <li>Automated bet placement</li>
+                            <li>Risk management system</li>
+                        </ul>
+                        <a href="https://github.com/rumaihi111/polyedge" class="repo-link" target="_blank" rel="noopener noreferrer">View Repository →</a>
+                    </div>
+                </div>
+
+                <!-- Polyrome -->
+                <div class="portfolio-item">
+                    <div class="portfolio-header">
+                        <h3>Polyrome</h3>
+                        <span class="portfolio-tag">Polymarket Trading</span>
+                    </div>
+                    <div class="portfolio-content">
+                        <p>A sophisticated trading bot specifically designed for Polymarket, featuring advanced market-making strategies and liquidity provision.</p>
+                        <ul class="portfolio-features">
+                            <li>Market-making capabilities</li>
+                            <li>Liquidity optimization</li>
+                            <li>Multi-market support</li>
+                            <li>Performance analytics</li>
+                        </ul>
+                        <a href="https://github.com/rumaihi111/polyrome" class="repo-link" target="_blank" rel="noopener noreferrer">View Repository →</a>
+                    </div>
+                </div>
+
+                <!-- TradingETH -->
+                <div class="portfolio-item">
+                    <div class="portfolio-header">
+                        <h3>TradingETH</h3>
+                        <span class="portfolio-tag">Cryptocurrency</span>
+                    </div>
+                    <div class="portfolio-content">
+                        <p>A comprehensive Ethereum trading bot with DeFi integration, supporting multiple strategies and automated portfolio management.</p>
+                        <ul class="portfolio-features">
+                            <li>ETH/ERC-20 trading</li>
+                            <li>DeFi protocol integration</li>
+                            <li>Strategy backtesting</li>
+                            <li>Smart contract interaction</li>
+                        </ul>
+                        <a href="https://github.com/rumaihi111/tradingeth" class="repo-link" target="_blank" rel="noopener noreferrer">View Repository →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about">
+        <div class="container">
+            <h2 class="section-title">Technical Expertise</h2>
+            <p>With extensive experience in algorithmic trading and blockchain technology, I specialize in creating robust, efficient, and profitable automated trading systems. My bots are built with a focus on reliability, security, and performance.</p>
+            <div class="skills">
+                <span class="skill-tag">Python</span>
+                <span class="skill-tag">JavaScript/Node.js</span>
+                <span class="skill-tag">Blockchain</span>
+                <span class="skill-tag">Smart Contracts</span>
+                <span class="skill-tag">Web3</span>
+                <span class="skill-tag">Trading Algorithms</span>
+                <span class="skill-tag">API Integration</span>
+                <span class="skill-tag">Machine Learning</span>
+                <span class="skill-tag">Data Analysis</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact">
+        <div class="container">
+            <h2>Let's Work Together</h2>
+            <p>Interested in building a custom trading bot or automating your crypto strategy?</p>
+            <a href="https://github.com/rumaihi111" class="cta-button" target="_blank" rel="noopener noreferrer">View GitHub Profile</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; <span id="year"></span> Crypto & Prediction Market Bot Developer. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Set current year in footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>
